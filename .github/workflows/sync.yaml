@@ -2,8 +2,8 @@ name: sync-repo
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: '*/5 * * * *'
+  schedule:
+    - cron: '*/5 * * * *'
 env:
   REPO1: headscale-demo
   GITEE_USER: ${{ secrets.GITEE_ACCOUNT }}
@@ -12,14 +12,16 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: sync
         env:
           REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
         run: |
+          cd repo
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git clone https://linaicode:0596253663linai@gitee.com/linaicode/headscale-demo.git
-          cd headscale-demo
+          git clone https://${{ env.GITEE_USER }}:${{ env.GITEE_PASS }}@gitee.com/${{ env.GITEE_USER }}/${{env.REPO1}}.git
+          cd ${{ env.REPO1}}
           git pull --all
-          git remote add github https://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@github.com/linai081795/headscale-demo.git
+          git remote add github https://${{ env.REPO_TOKEN }}@github.com/linai081795/${{env.REPO1}}.git
           git push -u -f --all github
