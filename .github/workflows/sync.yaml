@@ -12,13 +12,15 @@ jobs:
   check:
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
-        uses: actions/checkout@v4
       - name: sync
+        env:
+          REPO_TOKEN: ${{ secrets.REPO_TOKEN }}
         run: |
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
           git clone https://${{env.GITEE_USER}}:${{ env.GITEE_PASS }}@gitee.com/${{env.GITEE_USER}}/${{ env.REPO1 }}.git
           git pull --all
-          git remote add github https://${{secrets.GITHUB_TOKEN}}@github.com/linai081795/headscale-demo.git
+          git remote add github https://${{ env.REPO_TOKEN }}@github.com/linai081795/headscale-demo.git
           git push -u -f --all github
+      - name: SSH
+        uses: danshui-git/debugger-action@main
