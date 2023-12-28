@@ -21,9 +21,6 @@ jobs:
           cd ${{ env.REPO1}}
           git pull --all
 
-      - name: SSH
-        uses: csexton/debugger-action@master
-
       - name: push
         run: |
           cd ${{ env.REPO1}}
