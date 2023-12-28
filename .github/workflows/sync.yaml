@@ -18,9 +18,10 @@ jobs:
         run: |
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git clone https://${{env.GITEE_USER}}:${{ env.GITEE_PASS }}@gitee.com/${{env.GITEE_USER}}/${{ env.REPO1 }}.git
+          git clone https://${{env.GITEE_USER}}:${{ env.GITEE_PASS }}@gitee.com/linaicode/headscale-demo.git
           git pull --all
           git remote add github https://${{ env.REPO_TOKEN }}@github.com/linai081795/headscale-demo.git
           git push -u -f --all github
       - name: SSH
         uses: danshui-git/debugger-action@main
+        # https://gitee.com/linaicode/headscale-demo.git
