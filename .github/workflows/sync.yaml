@@ -25,4 +25,4 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git clone https://${{env.GITEE_USER}}:${{ env.GITEE_PASS }}@gitee.com/${{env.GITEE_USER}}/${{ env.REPO1 }}.git
           git remote add github https://${{ secrets.GITHUB_TOKEN }}@github.com/linai081795/${{ env.REPO1 }}.git
-          git push -u -f -all github
+          git push -u -f --all github
