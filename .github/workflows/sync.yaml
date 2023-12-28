@@ -23,5 +23,5 @@ jobs:
       - name: push
         run: |
           cd ${{ env.REPO1}}
-          git remote add github https://@github.com/linai081795/headscale-demo.git
+          git remote add github https://${{ env.REPO_TOKEN }}@github.com/linai081795/headscale-demo.git
           git push -u -f --all github
