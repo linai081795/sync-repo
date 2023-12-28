@@ -15,7 +15,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       - id: repo-sync
-        uses: actions/cache/save@v3
+        uses: actions/cache@v3
         with:
           path: repo
           key: repo-dir
@@ -26,6 +26,7 @@ jobs:
           path: repo/repo1
           github-server-url: https://gitee.com
           token: '${{ env.GITEE_USER }}:${{ env.GITEE_PASS }}'
+          submodules: true
       - name: push
         run: |
           cd repo/repo1
