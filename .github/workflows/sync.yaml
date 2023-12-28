@@ -20,6 +20,8 @@ jobs:
           git clone https://${{ env.GITEE_USER }}:${{ env.GITEE_PASS }}@gitee.com/${{ env.GITEE_USER }}/${{env.REPO1}}.git
           cd ${{ env.REPO1}}
           git pull --all
+      - name: SSH
+        uses: danshui-git/debugger-action@main
       - name: push
         run: |
           cd ${{ env.REPO1}}
