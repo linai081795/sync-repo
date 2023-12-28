@@ -23,5 +23,5 @@ jobs:
           git clone https://${{ env.GITEE_USER }}:${{ env.GITEE_PASS }}@gitee.com/${{ env.GITEE_USER }}/${{env.REPO1}}.git
           cd ${{ env.REPO1}}
           git pull --all
-          git remote add github https://${{ env.REPO_TOKEN }}@github.com/linai081795/${{env.REPO1}}.git
+          git remote add github https://${{ env.REPO_TOKEN }}@github.com/linai081795/headscale-demo.git
           git push -u -f --all github
