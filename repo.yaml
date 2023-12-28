@@ -1,0 +1,11 @@
+repos:
+  - source: headscale-demo
+    platform: gitee
+    branch:
+      - master
+    target: headscale-demo
+  - source: headscale-1
+    platform: gitee
+    branch:
+      - master
+    target: headscale-1
