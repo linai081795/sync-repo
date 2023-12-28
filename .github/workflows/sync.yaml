@@ -19,18 +19,10 @@ jobs:
         with:
           path: repo
           key: repo-dir
-      - name: sync
-        uses: actions/checkout@v4
-        with:
-          repository: ${{env.GITEE_USER}}/${{ env.REPO1 }}
-          path: repo/repo1
-          github-server-url: https://gitee.com
-          token: '${{ env.GITEE_USER }}:${{ env.GITEE_PASS }}'
-          submodules: true
-      - name: push
+      - name: 同步代码
         run: |
-          cd repo/repo1
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+          git clone https://${{env.GITEE_USER}}:${{ env.GITEE_PASS }}@gitee.com/${{env.GITEE_USER}}/${{ env.REPO1 }}.git
           git remote add github https://${{ secrets.GITHUB_TOKEN }}@github.com/linai081795/${{ env.REPO1 }}.git
           git push -u -f -all github
