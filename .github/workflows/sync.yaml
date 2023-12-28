@@ -3,7 +3,7 @@ name: sync-repo
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '*/10 * * * *'
 env:
   REPO1: headscale-demo
   GITEE_USER: ${{ secrets.GITEE_ACCOUNT }}
